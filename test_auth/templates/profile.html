@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>My Profile</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Update profile</button>
+</form>
+<hr>
+<h2>Deactivate account</h2>
+<form method="post" action="{% url 'deactivate_account' %}">
+  {% csrf_token %}
+  {{ deactivate_form.as_p }}
+  <button type="submit">Deactivate</button>
+</form>
+{% endblock %}

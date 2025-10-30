@@ -1,7 +1,16 @@
 from django.urls import path, include
-from .views import Register, EmailVerify
+from .views import (
+    AccountDeactivateView,
+    EmailVerify,
+    MyLoginView,
+    ProfileView,
+    ProjectListView,
+    Register,
+    ReportEditView,
+    RoleAssignmentView,
+    RolePermissionManagementView,
+)
 from django.views.generic import TemplateView
-
 
 urlpatterns = [
     path('login/', MyLoginView.as_view(), name='login'),
@@ -26,4 +35,10 @@ urlpatterns = [
         name='confirm_email'
     ),
     path('register/', Register.as_view(), name='register'),
+    path('profile/', ProfileView.as_view(), name='profile'),
+    path('profile/deactivate/', AccountDeactivateView.as_view(), name='deactivate_account'),
+    path('api/permissions/', RolePermissionManagementView.as_view(), name='api_permissions'),
+    path('api/roles/assign/', RoleAssignmentView.as_view(), name='api_role_assignment'),
+    path('mock/projects/', ProjectListView.as_view(), name='projects'),
+    path('mock/reports/', ReportEditView.as_view(), name='reports_edit'),
 ]
