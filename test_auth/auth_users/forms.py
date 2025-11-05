@@ -35,6 +35,16 @@ class UserCreationForm(DjangoUserCreationForm):
         model = User
         fields = ("username", "email")
 
+    def clean_email(self):
+        email = self.cleaned_data["email"]
+        normalized_email = email.lower()
+        if User.objects.filter(email__iexact=normalized_email).exists():
+            raise ValidationError(
+                _("A user with that email already exists."),
+                code="unique",
+            )
+        return email
+
 
 class ProfileUpdateForm(DjangoUserChangeForm):
     password = None
