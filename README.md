@@ -1,8 +1,3 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/README.md b/README.md
-new file mode 100644
-index 0000000000000000000000000000000000000000..1e4613c5c671fd54a9851240e075a3bbe66721a6
---- /dev/null
 +++ b/README.md
 @@ -0,0 +1,44 @@
 +# Простое описание проекта
@@ -17,7 +12,6 @@ index 0000000000000000000000000000000000000000..1e4613c5c671fd54a9851240e075a3bb
 +   source venv/Scripts/activate
 +   pip install -r requirements.txt
 +   ```
-+   Если вы используете виртуальное окружение, активируйте его заранее.
 +
 +2. Примените миграции базы данных:
 +   ```bash
